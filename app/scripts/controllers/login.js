@@ -7,7 +7,9 @@
  * Manages authentication to any active providers.
  */
 angular.module('addressDbApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $routeParams) {
+    $scope.createMode = $routeParams.register === 'true' ? true : false;
+
     $scope.oauthLogin = function(provider) {
       $scope.err = null;
       Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(redirect, showError);

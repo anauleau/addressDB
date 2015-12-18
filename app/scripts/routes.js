@@ -61,12 +61,7 @@ angular.module('addressDbApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
-      .when('/login', {
+      .when('/login/:register', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
