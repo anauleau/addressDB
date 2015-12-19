@@ -69,6 +69,10 @@ angular.module('addressDbApp')
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
+      .when('/newRequest', {
+        templateUrl: 'views/newrequest.html',
+        controller: 'NewrequestCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 

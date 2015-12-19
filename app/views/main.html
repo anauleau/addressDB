@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" ng-hide-auth="">
   <h1>Address DB</h1>
   <p class="lead">
     Invite friends to share their addresses with you.
@@ -6,3 +6,7 @@
   <p><a class="btn btn-lg btn-success" ng-href="#/login/true">Register</span></a></p>
   <p>Existing users <a href="#/login/false">login here</a>.</p>
 </div>
+<div class="jumbotron" ng-show-auth="">
+  <h1>Hi user</h1>
+</div>
+
