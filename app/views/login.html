@@ -40,7 +40,7 @@
    </p>
    <p class="form-group" ng-cloak ng-show="createMode">
         <label for="address2">Address 2</label>
-        <input id="address2" required name="address2" type="text" ng-model="model.address2" class="form-control" />
+        <input id="address2" name="address2" type="text" ng-model="model.address2" class="form-control" />
    </p>
    <p class="form-group" ng-cloak ng-show="createMode">
         <label for="city">City</label>
@@ -48,7 +48,7 @@
     </p>
     <p class="form-group" ng-cloak ng-show="createMode">
         <label for="state">State</label>
-        <select class="form-control" ng-model="model.state" name="state" required ng-options="code for (code, state) in states">...</select>
+        <select if="state" class="form-control" ng-model="model.state" name="state" required ng-options="code for (code, state) in states">...</select>
    </p>
    <p class="form-group" ng-cloak ng-show="createMode">
         <label for="postalCode">Zip Code</label>
@@ -56,7 +56,7 @@
    </p>
    <p class="form-group" ng-cloak ng-show="createMode">
         <label for="counrty">Country</label>
-        <input id="counrty" required name="country" type="text" ng-model="model.country" class="form-control" />
+        <select required id="counrty" class="form-control" ng-model="model.country" name="state" required ng-options="country.name for country in countries"></select>
    </p>
    <p>
         <button  class="btn btn-primary" ng-click="passwordLogin(model.email, model.pass)" ng-hide="createMode">Log In</button>

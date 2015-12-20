@@ -7,9 +7,12 @@
  * Manages authentication to any active providers.
  */
 angular.module('addressDbApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $routeParams, States) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $routeParams, States, Countries) {
     $scope.model = {};
     $scope.states = States;
+    $scope.countries = Countries;
+    // Set default country to USA
+    $scope.model.country = $scope.countries[0]; 
     $scope.createMode = $routeParams.register === 'true' ? true : false;
 
     $scope.oauthLogin = function(provider) {
