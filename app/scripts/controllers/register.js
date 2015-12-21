@@ -1,3 +1,4 @@
+/* global Firebase */
 'use strict';
 
 /**
@@ -8,13 +9,12 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('RegisterCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $routeParams, States, Countries) {
+  .controller('RegisterCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, States, Countries) {
     $scope.model = {};
     $scope.states = States;
     $scope.countries = Countries;
     // Set default country to USA
-    $scope.model.country = $scope.countries[0]; 
-    $scope.createMode = $routeParams.register === 'true' ? true : false;
+    $scope.model.country = $scope.countries[0];
 
     $scope.oauthLogin = function(provider) {
       $scope.err = null;
@@ -59,6 +59,8 @@ angular.module('addressDbApp')
             newProfileObj[user.uid] = {
                 id: user.uid,
                 email: params.email,
+                createdAt: Firebase.ServerValue.TIMESTAMP,
+                modifiedAt: Firebase.ServerValue.TIMESTAMP,
                 name: firstPartOfEmail(params.email),
                 firstName: params.firstName,
                 lastName: params.lastName
@@ -81,7 +83,8 @@ angular.module('addressDbApp')
         var ref = Ref.child('addresses'), def = $q.defer(), users = {}, newAddress;
         users[user.uid] = true;
         newAddress = ref.push({
-            createdAt: new Date(),
+            createdAt: Firebase.ServerValue.TIMESTAMP,
+            modifiedAt: Firebase.ServerValue.TIMESTAMP,
             owner: user.uid,
             name: params.addressName,
             email: params.email,
@@ -132,8 +135,6 @@ angular.module('addressDbApp')
       var f = str.charAt(0).toUpperCase();
       return f + str.substr(1);
     }
-
-  
 
     function redirect() {
       $location.path('/accounts');

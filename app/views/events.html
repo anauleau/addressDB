@@ -1,1 +1,16 @@
-<p>This is the events view.</p>
+<div class="row">
+    <h4>Create New Event</h4>
+    <form role="form">
+    <p class="form-group">
+        <label for="eventName">Name</label>
+        <input id="eventName" placeholder="e.g. Christmas Card, Wedding Invitations" required name="eventName" type="text" ng-model="model.name" class="form-control" />
+    </p>
+    <p>
+        <button  class="btn btn-primary" ng-click="createEvent(model)">Submit</button>
+    </p>
+    </form>
+    <p ng-show="err" class="bg-danger">{{err}}</p>
+</div>
+<div class="row">
+    <h4>My Events</h4>
+</div>
