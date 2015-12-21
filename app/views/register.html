@@ -1,0 +1,56 @@
+<form role="form">
+  <p class="form-group">
+        <label for="loginEmail">email</label>
+        <input id="loginEmail" required name="email" type="email" ng-model="model.email" class="form-control" />
+  </p>
+  <p class="form-group">
+        <label for="loginPass">password</label>
+        <input id="loginPass" required name="pass" type="password" ng-model="model.pass" class="form-control" />
+  </p>
+  <p class="form-group" ng-cloak>
+        <label for="loginConfirm">confirm pass</label>
+  </p>
+  <p class="form-group" ng-cloak>
+        <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
+  </p>
+  <p class="form-group" ng-cloak>
+        <label for="firstName">First Name</label>
+        <input id="firstName" required name="firstName" type="text" ng-model="model.firstName" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="lastName">Last Name</label>
+        <input id="lastName" required name="lastName" type="text" ng-model="model.lastName" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="addressName">Address Name</label>
+        <input id="addressName" name="addressName" type="text" ng-model="model.addressName" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="address1">Address 1</label>
+        <input id="address1" required name="address1" type="text" ng-model="model.address1" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="address2">Address 2</label>
+        <input id="address2" name="address2" type="text" ng-model="model.address2" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="city">City</label>
+        <input id="city" required name="city" type="text" ng-model="model.city" class="form-control" />
+    </p>
+    <p class="form-group" ng-cloak>
+        <label for="state">State</label>
+        <select if="state" class="form-control" ng-model="model.state" name="state" required ng-options="code for (code, state) in states">...</select>
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="postalCode">Zip Code</label>
+        <input id="postalCode" required name="postalCode" type="text" ng-model="model.postalCode" class="form-control" />
+   </p>
+   <p class="form-group" ng-cloak>
+        <label for="counrty">Country</label>
+        <select required id="counrty" class="form-control" ng-model="model.country" name="state" required ng-options="country.name for country in countries"></select>
+   </p>
+   <p>
+        <button  class="btn btn-primary" ng-cloak ng-click="createAccount(model, confirm)">Create Account</button>
+   </p>
+</form>
+<p ng-show="err" class="bg-danger">{{err}}</p>

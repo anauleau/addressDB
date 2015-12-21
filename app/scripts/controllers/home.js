@@ -8,7 +8,7 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('HomeCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
+  .controller('HomeCtrl', function ($scope, user, Auth, Ref, $firebaseObject) {
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };
     $scope.addresses = [];

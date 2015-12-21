@@ -61,7 +61,7 @@ angular.module('addressDbApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/login/:register', {
+      .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
@@ -76,6 +76,14 @@ angular.module('addressDbApp')
       .whenAuthenticated('/home', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .when('/events', {
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl'
       })
       .otherwise({redirectTo: '/'});
   }])
