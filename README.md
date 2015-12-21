@@ -54,5 +54,5 @@ Run `grunt` for building and `grunt serve` for preview.
 Running `grunt test` will run the unit tests with karma.
 
 ## App Structure
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+This project is generated with [yo angular generator](https://github.com/yeoman/generator		-angular)
 version 1.0.0.

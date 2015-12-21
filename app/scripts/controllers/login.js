@@ -81,6 +81,7 @@ angular.module('addressDbApp')
         users[user.uid] = true;
         newAddress = ref.push({
             createdAt: new Date(),
+            owner: user.uid,
             name: params.addressName,
             email: params.email,
             address1: params.address1,
@@ -88,7 +89,7 @@ angular.module('addressDbApp')
             city: params.city,
             state: params.state,
             postalCode: params.postalCode,
-            country: params.country,
+            country: params.country.name,
             users: users
             }, function(err) {
           $timeout(function() {
@@ -134,7 +135,7 @@ angular.module('addressDbApp')
   
 
     function redirect() {
-      $location.path('/account');
+      $location.path('/accounts');
     }
 
     function showError(err) {

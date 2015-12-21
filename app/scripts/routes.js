@@ -73,6 +73,10 @@ angular.module('addressDbApp')
         templateUrl: 'views/newrequest.html',
         controller: 'NewrequestCtrl'
       })
+      .whenAuthenticated('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
