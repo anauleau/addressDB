@@ -61,6 +61,10 @@ angular.module('addressDbApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .whenAuthenticated('/', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -69,19 +73,11 @@ angular.module('addressDbApp')
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
-      .when('/newRequest', {
-        templateUrl: 'views/newrequest.html',
-        controller: 'NewrequestCtrl'
-      })
-      .whenAuthenticated('/home', {
-        templateUrl: 'views/home.html',
-        controller: 'HomeCtrl'
-      })
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
       })
-      .when('/events', {
+      .whenAuthenticated('/events', {
         templateUrl: 'views/events.html',
         controller: 'EventsCtrl'
       })

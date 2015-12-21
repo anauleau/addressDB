@@ -34,6 +34,4 @@ angular.module('addressDbApp')
     function showError(err) {
       $scope.err = err;
     }
-
-
   });
