@@ -1,3 +1,12 @@
 <div class="row">
-    <p>{{ addressList }}</p>
+    <address>
+        <strong>{{ profile.firstName }} {{ profile.lastName }}</strong><br>
+        <strong>{{ profile.email }}</strong>
+    </address>
+    <address>
+        <strong>{{ address.name }}</strong><br>
+        {{ address.address1 }}<br>
+        {{ address.address1 }}<br>
+        {{ address.city }}, {{ address.state }} {{ address.postalCode }}<br>
+    </address>
 </div>
