@@ -40,7 +40,7 @@ angular.module('addressDbApp')
           function addEventRef (eventID) {
              var ref = Ref.child('users/' + user.uid + '/events'), def = $q.defer(), hook = {};
              hook[eventID] = true;
-             ref.set(hook, function(err) {
+             ref.update(hook, function(err) {
                $timeout(function() {
                   if( err ) {
                      def.reject(err);

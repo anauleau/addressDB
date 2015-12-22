@@ -9,6 +9,6 @@
  */
 angular.module('addressDbApp')
   .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $location) {
-     var eventRef = Ref.child('events/' + $location.$$url.split('/')[2])
+     var eventRef = Ref.child('events/' + $location.$$url.split('/')[2]);
      $scope.event = $firebaseObject(eventRef);
   });

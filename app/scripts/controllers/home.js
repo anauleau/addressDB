@@ -13,5 +13,6 @@ angular.module('addressDbApp')
     var profileRef = Ref.child('users/' + user.uid);
     $scope.profile = $firebaseObject(profileRef);
     $scope.profile.$loaded(function (data){
+        $scope.address = $firebaseObject(Ref.child('addresses/' + Object.keys(data.addresses)[0]));
     });
   });
