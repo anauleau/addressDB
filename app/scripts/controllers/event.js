@@ -8,10 +8,7 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('EventCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $location) {
+     var eventRef = Ref.child('events/' + $location.$$url.split('/')[2])
+     $scope.event = $firebaseObject(eventRef);
   });

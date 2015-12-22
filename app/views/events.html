@@ -13,4 +13,25 @@
 </div>
 <div class="row">
     <h4>My Events</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date Created</th>
+                <th>Invitations Sent</th>
+                <th>Addresses Received</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="event in events">
+                <td><a href="" ng-click="redirect(event.id)">{{ event.name }}</a></td>
+                <td>{{ event.createdAt }}</td>
+                <td>{{ event.invitationCount }}</td>
+                <td>{{ event.addressCount }}</td>
+            </tr>
+            <tr ng-if="events.length == 0">
+                <td>You have no events</td>
+            </tr>
+        </tbody>
+  </table>
 </div>
