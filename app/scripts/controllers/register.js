@@ -137,7 +137,7 @@ angular.module('addressDbApp')
     }
 
     function redirect() {
-      $location.path('/accounts');
+      $location.path('/home');
     }
 
     function showError(err) {
