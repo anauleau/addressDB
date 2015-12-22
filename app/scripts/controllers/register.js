@@ -55,8 +55,8 @@ angular.module('addressDbApp')
       }
 
       function createProfile(user) {
-        var ref = Ref.child('users'), def = $q.defer(), newProfileObj = {};
-            newProfileObj[user.uid] = {
+        var ref = Ref.child('users/' + user.uid), def = $q.defer(), newProfileObj;
+            newProfileObj = {
                 id: user.uid,
                 email: params.email,
                 createdAt: Firebase.ServerValue.TIMESTAMP,
@@ -65,7 +65,7 @@ angular.module('addressDbApp')
                 firstName: params.firstName,
                 lastName: params.lastName
             };
-        ref.set(newProfileObj, function(err) {
+        ref.update(newProfileObj, function(err) {
           $timeout(function() {
             if( err ) {
               def.reject(err);
@@ -109,9 +109,8 @@ angular.module('addressDbApp')
       }
 
       function addAddressHook(addressId) {
-          var ref = Ref.child('users/' + userId + '/addresses'), def = $q.defer(), hook = {};
-          hook[addressId] = true;
-          ref.set(hook, function(err) {
+          var ref = Ref.child('users/' + userId + '/addresses/' + addressId), def = $q.defer();
+          ref.set(true, function(err) {
           $timeout(function() {
             if( err ) {
               def.reject(err);
