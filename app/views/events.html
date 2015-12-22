@@ -25,7 +25,7 @@
         <tbody>
             <tr ng-repeat="event in events">
                 <td><a href="" ng-click="redirect(event.id)">{{ event.name }}</a></td>
-                <td>{{ event.createdAt }}</td>
+                <td>{{ event.createdAt | date:'medium'}}</td>
                 <td>{{ event.invitationCount }}</td>
                 <td>{{ event.addressCount }}</td>
             </tr>
