@@ -1,1 +1,49 @@
-<p>{{ event }}</p>
+<div class="row" ng-if="loaded">
+    <div class="container text-center">
+        <h3 ng-cloak>Event Name: {{ event.name }}</h3>
+        <span>Created At: {{ event.createdAt | date:'medium'}}</span>
+    </div>
+    <div class="container">
+        <h4>Request New Address</h4>
+        <form role="form">
+            <p class="form-group">
+                <label for="requestName">name</label>
+                <input id="requestName" required name="name" type="text" ng-model="model.name" class="form-control" />
+            </p>
+            <p class="form-group">
+                <label for="requestEmail">email</label>
+                <input id="requestEmail" required name="email" type="email" ng-model="model.email" class="form-control" />
+            </p>
+            <p>
+                <button  class="btn btn-success" ng-click="sendRequest(model)">Send</button>
+            </p>
+</form>
+    </div>
+    <div class="container">
+        <h4>Requests</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Request Sent On</th>
+                    <th>Address Received?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="invite in event.invitations">
+                    <td><a href="">{{ invite.name }}</a></td>
+                    <td>{{ invite.email }}</td>
+                    <td>{{ invite.createdAt | date:'medium'}}</td>
+                    <td>
+                        <span ng-if="!invite.addressReceived">No</span>
+                        <span ng-if="invite.addressReceived">Yes</span>
+                    </td>
+                </tr>
+                <tr ng-if="invitations.length == 0">
+                    <td>You have not requested any addresses.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

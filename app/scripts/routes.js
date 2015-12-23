@@ -83,7 +83,15 @@ angular.module('addressDbApp')
       })
       .whenAuthenticated('/event/:id', {
         templateUrl: 'views/event.html',
-        controller: 'EventCtrl'
+        controller: 'EventCtrl',
+        resolve: {
+            event: function (Ref, $firebaseObject, $route) {
+                   return $firebaseObject(Ref.child('events/' + $route.current.params.id));
+            },
+            invitations: function (Ref, $firebaseArray, $route) {
+                   return $firebaseArray(Ref.child('events/' + $route.current.params.id + '/invitations'));
+            }
+        }
       })
       .when('/event', {
         templateUrl: 'views/event.html',
