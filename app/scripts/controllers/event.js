@@ -10,6 +10,7 @@
 angular.module('addressDbApp')
   .controller('EventCtrl', function ($scope, Ref, event, invitations, $timeout) {
      $scope.model = {};
+     $scope.show = false;
      $scope.event = event;
      $scope.event.$loaded().then(function(){
         $scope.loaded = true;

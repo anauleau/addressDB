@@ -32,7 +32,10 @@
             </thead>
             <tbody>
                 <tr ng-repeat="invite in event.invitations">
-                    <td><a href="">{{ invite.name }}</a></td>
+                    <td>
+                        <span ng-if="!invite.addressReceived">{{ invite.name }}</span>
+                        <a ng-if="invite.addressReceived" href="">{{ invite.name }}</a>
+                    </td>
                     <td>{{ invite.email }}</td>
                     <td>{{ invite.createdAt | date:'medium'}}</td>
                     <td>
