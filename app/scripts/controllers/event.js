@@ -1,3 +1,4 @@
+/* global Firebase */
 'use strict';
 
 /**
@@ -26,12 +27,12 @@ angular.module('addressDbApp')
          }, function(err) {
           $timeout(function() {
             if( err ) {
-              console.log(err)
+              console.log(err);
             }
             else {
               $scope.model = {};
             }
-          })
+          });
         });
-     }
+     };
   });

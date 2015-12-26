@@ -93,9 +93,14 @@ angular.module('addressDbApp')
             }
         }
       })
-      .when('/event', {
-        templateUrl: 'views/event.html',
-        controller: 'EventCtrl'
+      .when('/invite/:id', {
+        templateUrl: 'views/invite.html',
+        controller: 'InviteCtrl',
+        resolve: {
+            invitation: function (Ref, $firebaseObject, $route) {
+                   return $firebaseObject(Ref.child('invitations/' + $route.current.params.id));
+            }
+        }
       })
       .otherwise({redirectTo: '/'});
   }])
