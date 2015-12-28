@@ -7,7 +7,8 @@
  * Manages authentication to any active providers.
  */
 angular.module('addressDbApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $route, $rootScope) {
+    $rootScope.$route = $route;
     $scope.model = {};
 
     $scope.oauthLogin = function(provider) {

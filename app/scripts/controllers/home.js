@@ -8,7 +8,8 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('HomeCtrl', function ($scope, user, Auth, Ref, $firebaseObject, UserFactory) {
+  .controller('HomeCtrl', function ($scope, user, Auth, Ref, $firebaseObject, UserFactory, $route, $rootScope) {
+    $rootScope.$route = $route;
     var profileRef = Ref.child('users/' + user.uid);
     $scope.profile = new UserFactory(profileRef);
     $scope.profile.$loaded(function (data){

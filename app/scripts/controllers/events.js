@@ -9,7 +9,8 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('EventsCtrl', function ($scope, Auth, user, $location, $q, Ref, $timeout, $firebaseArray) {
+  .controller('EventsCtrl', function ($scope, Auth, user, $location, $q, Ref, $timeout, $firebaseArray, $route, $rootScope) {
+      $rootScope.$route = $route;
       $scope.model = {};
       $scope.events = [];
       var eventsRef = Ref.child('events');

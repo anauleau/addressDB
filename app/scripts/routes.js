@@ -63,15 +63,18 @@ angular.module('addressDbApp')
       })
       .whenAuthenticated('/home', {
         templateUrl: 'views/home.html',
-        controller: 'HomeCtrl'
+        controller: 'HomeCtrl',
+        activeTab: 'home'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        activeTab: 'login'
       })
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        activeTab: 'account'
       })
       .when('/register', {
         templateUrl: 'views/register.html',
@@ -79,7 +82,8 @@ angular.module('addressDbApp')
       })
       .whenAuthenticated('/events', {
         templateUrl: 'views/events.html',
-        controller: 'EventsCtrl'
+        controller: 'EventsCtrl',
+        activeTab: 'events'
       })
       .whenAuthenticated('/event/:id', {
         templateUrl: 'views/event.html',
