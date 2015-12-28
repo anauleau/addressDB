@@ -12,8 +12,8 @@ angular.module('addressDbApp').factory('UserFactory', function(Ref, $firebaseObj
         getAddresses: function(addressIDs) {
             var addresses = [];
             angular.forEach(addressIDs, function(val, id){
-               var eventRef = Ref.child('/addresses/' + id);
-               var address = new Address(eventRef);
+               var addressRef = Ref.child('/addresses/' + id);
+               var address = new Address(addressRef);
                addresses.push(address);
             });
             return addresses;

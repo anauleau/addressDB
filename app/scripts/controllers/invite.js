@@ -53,6 +53,7 @@ angular.module('addressDbApp')
                 createdAt: Firebase.ServerValue.TIMESTAMP,
                 modifiedAt: Firebase.ServerValue.TIMESTAMP,
                 owner: userID,
+                ownerName: invitation.name,
                 address1: params.address1,
                 address2: params.address2,
                 city: params.city,
@@ -106,6 +107,9 @@ angular.module('addressDbApp')
                 .catch(function(error) {
                     console.error('Error: ', error);
                 });
+         }
+         function saved() {
+             $scope.saved = true;
          }
       };
   });

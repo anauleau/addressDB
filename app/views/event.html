@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="invite in event.invitations">
+                <tr ng-repeat="invite in invitations">
                     <td>
                         <span ng-if="!invite.addressReceived">{{ invite.name }}</span>
                         <a ng-if="invite.addressReceived" href="">{{ invite.name }}</a>
