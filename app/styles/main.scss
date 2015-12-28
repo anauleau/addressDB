@@ -94,7 +94,11 @@ body {
     width: 30%;
 }
 
-/* pointer decorator */
+/* cursor decorators */
 .pointer {
     cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
 }

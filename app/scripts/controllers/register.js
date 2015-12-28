@@ -86,7 +86,7 @@ angular.module('addressDbApp')
             createdAt: Firebase.ServerValue.TIMESTAMP,
             modifiedAt: Firebase.ServerValue.TIMESTAMP,
             owner: user.uid,
-            name: params.name,
+            name: params.addressName,
             ownerName: params.firstName + ' ' + params.lastName,
             address1: params.address1,
             address2: params.address2,
