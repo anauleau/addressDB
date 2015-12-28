@@ -46,6 +46,9 @@
                 <a ng-hide-auth="" href="#/login">log in</a>    
                 <a ng-show-auth="" href="#/account">account</a>
               </li>
+              <li ng-show-auth="">
+                  <a class="glyphicon glyphicon-log-out pointer" ng-click="logout()"></a>
+              </li>
             </ul>
           </div>
         </div>

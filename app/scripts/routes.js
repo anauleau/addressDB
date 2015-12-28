@@ -111,6 +111,7 @@ angular.module('addressDbApp')
     function($rootScope, $location, Auth, SECURED_ROUTES, loginRedirectPath) {
       // watch for login status changes and redirect if appropriate
       Auth.$onAuth(check);
+      $rootScope.logout = function () {Auth.$unauth()};
 
       // some of our routes may reject resolve promises with the special {authRequired: true} error
       // this redirects to the login page whenever that is encountered
