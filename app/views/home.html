@@ -1,12 +1,25 @@
 <div class="row">
-    <address>
-        <strong>{{ profile.firstName }} {{ profile.lastName }}</strong><br>
-        <strong>{{ profile.email }}</strong>
-    </address>
-    <address>
-        <strong>{{ address.name }}</strong><br>
-        {{ address.address1 }}<br>
-        {{ address.address2 }}<br>
-        {{ address.city }}, {{ address.state }} {{ address.postalCode }}<br>
-    </address>
+</div>
+<div class="row">
+    <div class="container">
+        <h4>All Addresses</h4>
+        <table class="table">
+            <thead>
+                <td>Name</td>
+                <td>Address</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip</td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="address in addresses">
+                    <td>{{ address.name }}</td>
+                    <td>{{ address.address1 }}, {{ address.address2 }}</td>
+                    <td>{{ address.city }}</td>
+                    <td>{{ address.state }}</td>
+                    <td>{{ address.postalCode }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
