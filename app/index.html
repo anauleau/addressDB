@@ -42,10 +42,14 @@
               <li ng-class="{active: $route.current.activeTab == 'events'}">
                 <a ng-show-auth="" href="#/events">events</a>
               </li>
+              <li ng-class="{active: $route.current.activeTab == 'register'}">
+                <a ng-hide-auth="" href="#/register">register</a>
+              </li>
               <li ng-class="{active: $route.current.activeTab == 'login' || $route.current.activeTab == 'account'}">
                 <a ng-hide-auth="" href="#/login">log in</a>    
                 <a ng-show-auth="" href="#/account">account</a>
               </li>
+              
               <li ng-show-auth="">
                   <a class="glyphicon glyphicon-log-out pointer" ng-click="logout()" title="logout"></a>
               </li>

@@ -9,29 +9,9 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('RegisterCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, States, Countries) {
+  .controller('RegisterCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $route, $rootScope) {
+    $rootScope.$route = $route;
     $scope.model = {};
-    $scope.states = States;
-    $scope.countries = Countries;
-    // Set default country to USA
-    $scope.model.country = $scope.countries[0];
-
-    $scope.oauthLogin = function(provider) {
-      $scope.err = null;
-      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(redirect, showError);
-    };
-
-    $scope.anonymousLogin = function() {
-      $scope.err = null;
-      Auth.$authAnonymously({rememberMe: true}).then(redirect, showError);
-    };
-
-    $scope.passwordLogin = function(email, pass) {
-      $scope.err = null;
-      Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true}).then(
-        redirect, showError
-      );
-    };
 
     $scope.createAccount = function(params, confirm) {
       var userId;
@@ -49,8 +29,6 @@ angular.module('addressDbApp')
             return Auth.$authWithPassword({email: params.email, password: params.pass}, {rememberMe: true});
           })
           .then(createProfile)
-          .then(createAddress)
-          .then(addAddressHook)
           .then(redirect, showError);
       }
 
@@ -78,50 +56,6 @@ angular.module('addressDbApp')
         });
         return def.promise;
       }
-
-      function createAddress(user) {
-        var ref = Ref.child('addresses'), def = $q.defer(), users = {}, newAddress;
-        users[user.uid] = true;
-        newAddress = ref.push({
-            createdAt: Firebase.ServerValue.TIMESTAMP,
-            modifiedAt: Firebase.ServerValue.TIMESTAMP,
-            owner: user.uid,
-            name: params.addressName,
-            ownerName: params.firstName + ' ' + params.lastName,
-            address1: params.address1,
-            address2: params.address2,
-            city: params.city,
-            state: params.state,
-            postalCode: params.postalCode,
-            country: params.country.name,
-            users: users
-            }, function(err) {
-          $timeout(function() {
-            if( err ) {
-              def.reject(err);
-            }
-            else {
-              def.resolve(newAddress.key());
-            }
-          });
-        });
-        return def.promise;
-      }
-
-      function addAddressHook(addressId) {
-          var ref = Ref.child('users/' + userId + '/addresses/' + addressId), def = $q.defer();
-          ref.set(true, function(err) {
-          $timeout(function() {
-            if( err ) {
-              def.reject(err);
-            }
-            else {
-              def.resolve();
-            }
-          });
-        });
-        return def.promise;
-      }
     };
 
     function firstPartOfEmail(email) {
@@ -136,7 +70,7 @@ angular.module('addressDbApp')
     }
 
     function redirect() {
-      $location.path('/home');
+      $location.path('/newAddress');
     }
 
     function showError(err) {

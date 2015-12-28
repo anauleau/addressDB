@@ -10,9 +10,4 @@ describe('Service: Countries', function () {
   beforeEach(inject(function (_Countries_) {
     Countries = _Countries_;
   }));
-
-  it('should do something', function () {
-    expect(!!Countries).toBe(true);
-  });
-
 });
