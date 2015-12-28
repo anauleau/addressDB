@@ -1,3 +1,4 @@
+/* global Firebase */
 'use strict';
 
 /**
@@ -8,13 +9,16 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('InviteCtrl', function ($scope, invitation, Ref, $q, $timeout) {
-      $scope.userid;
-      $scope.submit = function (params) {
+  .controller('InviteCtrl', function ($scope, invitation, Ref, $q, $timeout, States, Countries) {
+      $scope.states = States;
+      $scope.countries = Countries;
+      $scope.model = {};
+      $scope.submitAddress = function (params) {
           createAnonUser()
             .then(addAddress)
             .then(addOwnerHook)
             .then(addHostHook)
+            .then(markAddressReceived);
 
           function createAnonUser() {
               var ref = Ref.child('users'),
@@ -29,7 +33,7 @@ angular.module('addressDbApp')
                      if(err) {
                          def.reject(err);
                      } else {
-                         $scope.userid = newAnonUser.key();
+                         $scope.userID = newAnonUser.key();
                          def.resolve(newAnonUser.key());
                      }
                   });
@@ -40,7 +44,9 @@ angular.module('addressDbApp')
               var ref = Ref.child('addresses'),
                 def = $q.defer(),
                 newAddress,
-                users = {};
+                users = {},
+                events = {};
+              events[invitation.eventID] = true;
               users[userID] = true;
               users[invitation.owner] = true;
               newAddress = ref.push({
@@ -66,13 +72,13 @@ angular.module('addressDbApp')
               return def.promise;
           }
           function addOwnerHook(addressID) {
-            var ref = Ref.child('users/' + $scope.userId + '/addresses/' + addressID), def = $q.defer();
+            var ref = Ref.child('users/' + $scope.userID + '/addresses/' + addressID), def = $q.defer();
             ref.set(true, function(err) {
                 $timeout(function() {
                     if( err ) {
                         def.reject(err);
                     } else {
-                        def.resolve();
+                        def.resolve(addressID);
                     }
                 });
             });
@@ -90,6 +96,16 @@ angular.module('addressDbApp')
                 });
             });
             return def.promise;
+         }
+         function markAddressReceived() {
+            invitation.addressReceived = true;
+            invitation.$save()
+                .then(function(ref) {
+                    console.log(ref.key() === invitation.$id);
+                })
+                .catch(function(error) {
+                    console.error('Error: ', error);
+                });
          }
       };
   });
