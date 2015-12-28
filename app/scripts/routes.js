@@ -98,6 +98,10 @@ angular.module('addressDbApp')
             }
         }
       })
+      .when('/newAddress', {
+        templateUrl: 'views/newaddress.html',
+        controller: 'NewaddressCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
