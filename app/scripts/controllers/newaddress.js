@@ -8,7 +8,7 @@
  * Controller of the addressDbApp
  */
 angular.module('addressDbApp')
-  .controller('NewaddressCtrl', function ($scope) {
+  .controller('NewaddressCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, States, Countries) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

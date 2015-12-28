@@ -11,8 +11,4 @@ describe('Service: NormalizedEvents', function () {
     NormalizedEvents = _NormalizedEvents_;
   }));
 
-  it('should do something', function () {
-    expect(!!NormalizedEvents).toBe(true);
-  });
-
 });
