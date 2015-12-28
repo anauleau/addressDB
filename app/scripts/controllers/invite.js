@@ -18,7 +18,9 @@ angular.module('addressDbApp')
             .then(addAddress)
             .then(addOwnerHook)
             .then(addHostHook)
-            .then(markAddressReceived);
+            .then(iterateAddressCount)
+            .then(markAddressReceived)
+            .then(saved);
 
           function createAnonUser() {
               var ref = Ref.child('users'),
@@ -107,6 +109,12 @@ angular.module('addressDbApp')
                 .catch(function(error) {
                     console.error('Error: ', error);
                 });
+         }
+         function iterateAddressCount() {
+             var ref = Ref.child('events/' + invitation.eventID + '/addressCount');
+             ref.transaction(function(count) {
+                 return count + 1;
+             });
          }
          function saved() {
              $scope.saved = true;

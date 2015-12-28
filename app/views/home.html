@@ -12,7 +12,7 @@
                 <td>Zip</td>
             </thead>
             <tbody>
-                <tr ng-repeat="address in addresses">
+                <tr ng-repeat="address in addresses" ng-if="address.owner !== profile.id">
                     <td>{{ address.ownerName }}</td>
                     <td>{{ address.address1 }}, {{ address.address2 }}</td>
                     <td>{{ address.city }}</td>
